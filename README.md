@@ -11,7 +11,7 @@ This project is for educational porpuses only. Pull request are welcome, but pri
 
 Site published at https://front-end-by-rimantas.github.io/24-grupe-portfolio/
 
-Design: [Cristino](http://shreethemes.in/cristino/layouts/index.html)
+Design: [Martin](http://inventheme.com/themeforest/martin/)
 
 ## Project features
 
