@@ -18,3 +18,13 @@
 /* blogs */
 /* contact me */
 /* footer */
+footer.container {
+  padding: 40px 0 0;
+  color: #fff;
+}
+.copyright {
+  display: inline-block;
+  width: 100%;
+  padding: 20px;
+  border-top: 1px solid #fff;
+}
