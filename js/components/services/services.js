@@ -17,19 +17,42 @@ function services(data) {
     }
   }
 
-  if (!Array.isArray(data.list)) {
+  const { selector, list } = data;
+
+  if (!Array.isArray(list)) {
     return 'Parametras "list" netinkamo formato';
   }
 
-  if (typeof data.selector !== 'string' ||
-    data.selector === '') {
+  if (typeof selector !== 'string' ||
+    selector === '') {
     return 'Parametras "selector" netinkamo formato';
   }
 
-
   // logic
+  const DOM = document.querySelector(selector);
+  // const HTML = list.map(item =>
+  //   `<div class="col-12 col-md-6 col-lg-4 service">
+  //       ${item.icon.map(icon => `<i class="fa fa-${icon}"></i>`).join('')}
+  //       <h3>${item.title}</h3>
+  //       <p>${item.description}</p>
+  //   </div>`
+  // ).join('');
+
+  const HTML = list.reduce((html, item) =>
+    html + `<div class="service">
+              ${item.icon.map(icon => `<i class="fa fa-${icon}"></i>`).join('')}
+              <h3>${item.title}</h3>
+              <p>${item.description}</p>
+          </div>`, '');
+
   // post logic validation
+  if (HTML === '') {
+    return 'Duomenyse nerasta jokios teisingos informacijos';
+  }
+
   // result return
+  DOM.innerHTML = HTML;
+
   return true;
 }
 
