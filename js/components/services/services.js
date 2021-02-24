@@ -34,16 +34,16 @@ function services(data) {
     return 'Pagal pateikta selectoriu nerastas elementas';
   }
 
-  const HTML = list.reduce((html, item) => {
-    if (!item.icon) {
-      return '';
+  let HTML = '';
+  for (const item of list) {
+    if (item.icon && item.title && item.description) {
+      HTML += `<div class="service">
+                <i class="fa fa-${item.icon}"></i>
+                <h3>${item.title}</h3>
+                <p>${item.description}</p>
+            </div>`, '';
     }
-    return html + `<div class="service">
-              <i class="fa fa-${item.icon}"></i>
-              <h3>${item.title}</h3>
-              <p>${item.description}</p>
-          </div>`, '';
-  });
+  }
 
   // post logic validation
   if (HTML === '') {
