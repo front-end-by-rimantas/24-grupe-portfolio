@@ -4,6 +4,7 @@
 @import './components/layout.css';
 @import './components/utilities.css';
 /* 3rd party */
+@import './components/font-awesome.min.css';
 /* components */
 
 /* CUSTOM HOME PAGE CSS */
@@ -11,6 +12,8 @@
 /* hero */
 /* about me */
 /* services */
+@import './components/services.css';
+
 /* resume */
 /* freelance */
 /* portfolio */

@@ -1,0 +1,25 @@
+.services {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  align-items: center;
+}
+.services > .service {
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid red;
+  min-height: 150px;
+  align-self: start;
+}
+
+@media (min-width: 768px) {
+  .services {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 992px) {
+  .services {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
