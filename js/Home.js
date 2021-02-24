@@ -10,6 +10,9 @@ import { servicesData } from './data/servicesData.js';
 /* freelance */
 /* portfolio */
 /* testimonials */
+import { Carousel } from './components/carousel/Carousel.js';
+import { testimonialsData } from './data/testimonialsData.js';
+
 /* blogs */
 /* contact me */
 /* footer */
@@ -25,6 +28,9 @@ services(servicesData);
 /* freelance */
 /* portfolio */
 /* testimonials */
+const testimonials = new Carousel(testimonialsData);
+testimonials.init();
+
 /* blogs */
 /* contact me */
 /* footer */
