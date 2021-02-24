@@ -30,12 +30,20 @@ function services(data) {
 
   // logic
   const DOM = document.querySelector(selector);
-  const HTML = list.reduce((html, item) =>
-    html + `<div class="service">
-              ${item.icon.map(icon => `<i class="fa fa-${icon}"></i>`).join('')}
+  if (!DOM) {
+    return 'Pagal pateikta selectoriu nerastas elementas';
+  }
+
+  const HTML = list.reduce((html, item) => {
+    if (!item.icon) {
+      return '';
+    }
+    return html + `<div class="service">
+              <i class="fa fa-${item.icon}"></i>
               <h3>${item.title}</h3>
               <p>${item.description}</p>
-          </div>`, '');
+          </div>`, '';
+  });
 
   // post logic validation
   if (HTML === '') {

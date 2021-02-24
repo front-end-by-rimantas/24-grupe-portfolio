@@ -43,7 +43,36 @@ describe('Tikriname ar objekto struktura yra tinkama', () => {
 })
 
 describe('Tinkami duomenys grazina teisinga "services" html', () => {
+  test('neradus selectoriaus vietos ismeta klaida', () => {
+    document.body.innerHTML = '<div id="services_block"></div>';
+    const params = {
+      selector: '#wrong_services',
+      list: [
+        {
+          icon: 'television',
+          title: 'Search Optimization',
+          description: 'The9 is a graphically polished, interactive, easily customizable, highly modern, fast loading.'
+        }
+      ]
+    }
+    expect(services(params)).toBe('Pagal pateikta selectoriu nerastas elementas');
+  })
+
+  test('grazina klaida, kai nera geru duomenu sarase', () => {
+    document.body.innerHTML = '<div id="services_block"></div>';
+    const params = {
+      selector: '#services_block',
+      list: [
+        {},
+        4154,
+        'Labas'
+      ]
+    }
+    expect(services(params)).toBe('Duomenyse nerasta jokios teisingos informacijos');
+  })
+
   test('turi grazinti "true", jei parametrai yra tinkami', () => {
+    document.body.innerHTML = '<div id="services_block"></div>';
     const params = {
       selector: '#services_block',
       list: [
