@@ -1,9 +1,10 @@
 class Carousel {
-    constructor(params) {
+    constructor(params, renderingFunction) {
         this.selector = params.selector;
         this.imgPath = params.imgPath;
         this.list = params.list;
         this.circleControlsVisible = true;
+        this.renderingFunction = renderingFunction;
 
         this.DOM = null;
     }
@@ -15,7 +16,7 @@ class Carousel {
         }
 
         if (!this.isValidImgPath()) {
-            return 'Nevalidus imgPath'
+            return 'Nevalidus imgPath';
         }
 
         if (!this.isValidList()) {
@@ -70,7 +71,7 @@ class Carousel {
             if (this.isValidListItem(item)) {
                 HTML += `<div class="item">
                             <div class="content">
-                                CAROUSEL ITEM
+                                ${this.renderingFunction(item, this.imgPath)}
                             </div>
                         </div>`;
             }
