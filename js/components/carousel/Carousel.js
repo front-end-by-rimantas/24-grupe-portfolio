@@ -7,6 +7,9 @@ class Carousel {
         this.renderingFunction = renderingFunction;
 
         this.DOM = null;
+        this.listDOM = null;
+        this.controlCircles = null;
+        this.activeCircleIndex = 0;
     }
 
     init() {
@@ -24,6 +27,7 @@ class Carousel {
         }
 
         this.render();
+        this.addEvents();
     }
 
     isValidSelector() {
@@ -62,14 +66,18 @@ class Carousel {
         }
 
         this.DOM.innerHTML = HTML;
+
+        this.listDOM = this.DOM.querySelector('.list');
+        this.controlCircles = this.DOM.querySelectorAll('.controls > .circle');
     }
 
     renderList() {
-        let HTML = '<div class="list">';
+        let HTML = `<div class="list" style="width: ${this.list.length}00%;">`;
+        const itemWidth = 100 / this.list.length;
 
         for (const item of this.list) {
             if (this.isValidListItem(item)) {
-                HTML += `<div class="item">
+                HTML += `<div class="item" style="width: ${itemWidth}%;">
                             <div class="content">
                                 ${this.renderingFunction(item, this.imgPath)}
                             </div>
@@ -106,6 +114,37 @@ class Carousel {
             return false;
         }
         return true;
+    }
+
+    addEvents() {
+        for (let i = 0; i < this.controlCircles.length; i++) {
+            const circle = this.controlCircles[i];
+
+            circle.addEventListener('click', () => {
+                this.controlCircles[this.activeCircleIndex].classList.remove('active');
+                this.activeCircleIndex = i;
+                circle.classList.add('active');
+
+                this.listDOM.style.marginLeft = `-${i}00%`;
+            })
+
+            // circle.addEventListener('click', (function () {
+            //     this.clickCircle();
+            // }).bind(this))
+
+            // circle.addEventListener('click', () => {
+            //     this.clickCircle();
+            // })
+
+            // circle.addEventListener('click', this.clickCircle.bind(this))
+
+            // circle.addEventListener('click', () => this.clickCircle())
+        }
+    }
+
+    clickCircle() {
+        console.log('click circle...');
+        console.log(this.selector);
     }
 }
 

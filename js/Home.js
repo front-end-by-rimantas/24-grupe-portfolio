@@ -34,6 +34,7 @@ const testimonialsBlock = new Carousel(testimonialsData, testimonials);
 testimonialsBlock.init();
 
 const shopData = { ...testimonialsData, selector: '#shop_items_carousel' };
+shopData.list = [...shopData.list, ...shopData.list];
 
 const shopItemsBlock = new Carousel(shopData, shopItem);
 shopItemsBlock.init();
