@@ -1,59 +1,58 @@
 function services(data) {
-  // input validation
-  if (typeof data !== 'object' ||
-    Array.isArray(data)) {
-    return 'Netinkamo tipo parametras';
-  }
-
-  const allowedKeys = ['selector', 'list'];
-  const keys = Object.keys(data);
-  if (keys.length !== 2) {
-    return 'Netinkamas kiekis objekto raktazodziu';
-  }
-
-  for (const key of keys) {
-    if (!allowedKeys.includes(key)) {
-      return `Neatpazintas raktazodis "${key}"`;
+    // input validation
+    if (typeof data !== 'object' || Array.isArray(data)) {
+        return 'Netinkamo tipo parametras';
     }
-  }
 
-  const { selector, list } = data;
+    const allowedKeys = ['selector', 'list'];
+    const keys = Object.keys(data);
+    if (keys.length !== 2) {
+        return 'Netinkamas kiekis objekto raktazodziu';
+    }
 
-  if (!Array.isArray(list)) {
-    return 'Parametras "list" netinkamo formato';
-  }
+    for (const key of keys) {
+        if (!allowedKeys.includes(key)) {
+            return `Neatpazintas raktazodis "${key}"`;
+        }
+    }
 
-  if (typeof selector !== 'string' ||
-    selector === '') {
-    return 'Parametras "selector" netinkamo formato';
-  }
+    const { selector, list } = data;
 
-  // logic
-  const DOM = document.querySelector(selector);
-  if (!DOM) {
-    return 'Pagal pateikta selectoriu nerastas elementas';
-  }
+    if (!Array.isArray(list)) {
+        return 'Parametras "list" netinkamo formato';
+    }
 
-  let HTML = '';
-  for (const item of list) {
-    if (item.icon && item.title && item.description) {
-      HTML += `<div class="service">
+    if (typeof selector !== 'string' || selector === '') {
+        return 'Parametras "selector" netinkamo formato';
+    }
+
+    // logic
+    const DOM = document.querySelector(selector);
+    if (!DOM) {
+        return 'Pagal pateikta selectoriu nerastas elementas';
+    }
+
+    let HTML = '';
+    for (const item of list) {
+        if (item.icon && item.title && item.description) {
+            (HTML += `<div class="service">
                 <i class="fa fa-${item.icon}"></i>
                 <h3>${item.title}</h3>
                 <p>${item.description}</p>
-            </div>`, '';
+            </div>`),
+                '';
+        }
     }
-  }
 
-  // post logic validation
-  if (HTML === '') {
-    return 'Duomenyse nerasta jokios teisingos informacijos';
-  }
+    // post logic validation
+    if (HTML === '') {
+        return 'Duomenyse nerasta jokios teisingos informacijos';
+    }
 
-  // result return
-  DOM.innerHTML = HTML;
+    // result return
+    DOM.innerHTML = HTML;
 
-  return true;
+    return true;
 }
 
-export { services }
+export { services };
