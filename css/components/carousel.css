@@ -1,0 +1,40 @@
+.carousel {
+  overflow: hidden;
+}
+.carousel > .list {
+  display: inline-block;
+  width: 400%;
+  margin-left: 0;
+  transition: all 1s;
+}
+.carousel > .list > .item {
+  display: inline-block;
+  width: 25%;
+  float: left;
+  padding: 20px;
+}
+.carousel > .list > .item > .content {
+  display: inline-block;
+  width: 100%;
+  float: left;
+  background-color: #fff;
+  box-shadow: 0 2px 8px #0003;
+}
+.carousel > .controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.carousel > .controls > .circle {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--main-color);
+  background-color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.carousel > .controls > .circle:hover,
+.carousel > .controls > .circle.active {
+  background-color: var(--main-color);
+}

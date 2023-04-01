@@ -6,14 +6,16 @@
 /* 3rd party */
 @import './components/font-awesome.min.css';
 /* components */
+@import './components/services.css';
+@import './components/carousel.css';
+@import './components/testimonials.css';
+@import './components/shopItems.css';
 
 /* CUSTOM HOME PAGE CSS */
 /* header */
 /* hero */
 /* about me */
 /* services */
-@import './components/services.css';
-
 /* resume */
 /* freelance */
 /* portfolio */
